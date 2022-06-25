@@ -1,6 +1,6 @@
 function[kwb,Kw]=Kb(Hs,Va,T);
 % Input: 
-% Hs - significant waveheight (m)
+% Hs - significant wave height (m) or effective breaking height (m)
 % Va - Volume of air entrainment rate by breaking (m/s)
 % T  - seawater temperature (deg C)
 % Output:
@@ -42,6 +42,6 @@ Delta=exp(psc(1)*x.^5+psc(2)*x.^4+psc(3)*x.^3+psc(4)*x.^2+psc(5)*x.^1+psc(6));
 kwb=Va.*Delta.*1./(alpha);% bubble-mediated gas transfer (cm/hr)
 
 % total gas transfer coefficient including molecular-tubulent contribution (Deike and Melville 2018; Fairall et al. 2011)
-kmt=1.55*10^-4.*sqrt(660./Sc);
-Kw=kmt+kwb;
+kmt=1.55*10^-4.*sqrt(660./Sc); %  molecular-tubulent contribution
+Kw=kmt+kwb; % total
 end
